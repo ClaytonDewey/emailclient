@@ -1,8 +1,9 @@
 <h3>Create an Account</h3>
 <form class="ui form" [formGroup]="authForm">
-    <app-input label="Username" [control]="$any(authForm.get('username'))"></app-input>
-    <app-input label="Password" [control]="$any(authForm.get('password'))"></app-input>
-    <app-input label="Password Confirmation" [control]="$any(authForm.get('passwordConfirmation'))"></app-input>
+    <app-input inputType="text" label="Username" [control]="$any(authForm.get('username'))"></app-input>
+    <app-input inputType="password" label="Password" [control]="$any(authForm.get('password'))"></app-input>
+    <app-input inputType="password" label="Password Confirmation"
+        [control]="$any(authForm.get('passwordConfirmation'))"></app-input>
 
     <button class="ui submit button primary">
         Submit
