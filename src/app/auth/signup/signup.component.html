@@ -8,8 +8,14 @@
     <div *ngIf="authForm.get('password')?.touched && 
         authForm.get('passwordConfirmation')?.touched &&
         authForm.errors" class="ui red basic label">
-        <p *ngIf="authForm.errors?.passwordsDontMatch">
+        <p *ngIf="authForm.errors.passwordsDontMatch">
             Password and Password Confirmation do not match.
+        </p>
+        <p *ngIf="authForm.errors.noConnection">
+            No internet connection detected, failed to sign up.
+        </p>
+        <p *ngIf="authForm.errors.unknownError">
+            Failed to sign up.
         </p>
     </div>
 
@@ -18,6 +24,4 @@
             Submit
         </button>
     </div>
-
-    {{ authForm.errors | json }}
 </form>

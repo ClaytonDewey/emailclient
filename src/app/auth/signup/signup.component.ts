@@ -31,23 +31,31 @@ export class SignupComponent implements OnInit {
     { validators: [this.matchPassword.validate] }
     );
 
-  constructor(
-      private matchPassword: MatchPassword,
-      private uniqueUsername: UniqueUsername,
-      private authService: AuthService
+    constructor(
+        private matchPassword: MatchPassword,
+        private uniqueUsername: UniqueUsername,
+        private authService: AuthService
     ) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
     onSubmit() {
         if(this.authForm.invalid) {
             return;
         }
 
-        this.authService.signup(this.authForm.value)
-            .subscribe((response) => {
-                console.log(response)
-            });
+        this.authService.signup(this.authForm.value).subscribe({
+            next: (response) => {
+                // Navigate to some other route
+            },
+            error: (err) => {
+                if (!err.status) {
+                    this.authForm.setErrors({ noConnection: true })
+                } else {
+                    this.authForm.setErrors({ unknownError: true })
+                }
+            }
+        });
     }
 }
