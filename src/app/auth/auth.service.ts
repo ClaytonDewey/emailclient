@@ -33,7 +33,7 @@ export class AuthService {
     }
 
     signup(credentials: SignupCredentials) {
-        return this.http.post<SignupResponse>(`${this.rootUrl}auth/signup`, 
+        return this.http.post<SignupResponse>(`${this.rootUrl}/auth/signup`, 
             credentials
         ).pipe(
             tap(() => {
