@@ -9,3 +9,8 @@
 .actions:empty + .actions-default {
     display: block;
 }
+
+.actions-optional {
+    border-bottom-left-radius: 0.28571429rem;
+    border-bottom-right-radius: 0.28571429rem;
+}
